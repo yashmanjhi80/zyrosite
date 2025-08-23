@@ -10,9 +10,9 @@ interface ParticleStyle {
   top: string;
   animationDuration: string;
   animationDelay: string;
-  transformX: number;
-  transformY: number;
-  scale: number;
+  '--transform-x': string,
+  '--transform-y': string,
+  '--transform-scale': number,
 }
 
 const ParticleBackground = () => {
@@ -33,9 +33,9 @@ const ParticleBackground = () => {
           top: `${Math.random() * 100}%`,
           animationDuration: `${Math.random() * 20 + 10}s`,
           animationDelay: `${Math.random() * -20}s`,
-          transformX: (Math.random() - 0.5) * 500,
-          transformY: (Math.random() - 0.5) * 500,
-          scale: Math.random() * 1.5,
+          '--transform-x': `${(Math.random() - 0.5) * 500}px`,
+          '--transform-y': `${(Math.random() - 0.5) * 500}px`,
+          '--transform-scale': Math.random() * 1.5,
         }));
       };
       setParticles(generateParticles());
@@ -47,24 +47,16 @@ const ParticleBackground = () => {
   }
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
-      {particles.map((style, i) => (
-        <div
-          key={i}
-          className="absolute bg-primary/20 rounded-full animate-particle"
-          style={{
-            width: style.width,
-            height: style.height,
-            left: style.left,
-            top: style.top,
-            animationDuration: style.animationDuration,
-            animationDelay: style.animationDelay,
-            '--transform-x': `${style.transformX}px`,
-            '--transform-y': `${style.transformY}px`,
-            '--transform-scale': `${style.scale}`,
-          } as React.CSSProperties}
-        />
-      ))}
+    <>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {particles.map((style, i) => (
+          <div
+            key={i}
+            className="absolute bg-primary/20 rounded-full animate-particle"
+            style={style as React.CSSProperties}
+          />
+        ))}
+      </div>
       <style jsx>{`
         @keyframes particle {
           0% { transform: translate(0, 0) scale(1); opacity: 1; }
@@ -75,7 +67,7 @@ const ParticleBackground = () => {
           animation-iteration-count: infinite;
         }
       `}</style>
-    </div>
+    </>
   );
 };
 

@@ -39,7 +39,7 @@ export default function Pricing() {
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl font-bold font-headline">{plan.name}</CardTitle>
                 <CardDescription>
-                    <span className="text-4xl font-bold text-foreground font-code">${plan.priceUSD}</span>
+                    <span className="text-4xl font-bold text-foreground font-code">₹{plan.priceINR}</span>
                     <span className="text-muted-foreground">/mo</span>
                 </CardDescription>
               </CardHeader>
