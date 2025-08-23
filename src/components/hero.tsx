@@ -1,35 +1,84 @@
 'use client'
 
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 
-const ParticleBackground = () => (
-  <div className="absolute inset-0 z-0 overflow-hidden">
-    {[...Array(20)].map((_, i) => (
-      <div
-        key={i}
-        className="absolute bg-primary/20 rounded-full animate-particle"
-        style={{
+interface ParticleStyle {
+  width: string;
+  height: string;
+  left: string;
+  top: string;
+  animationDuration: string;
+  animationDelay: string;
+  transformX: number;
+  transformY: number;
+  scale: number;
+}
+
+const ParticleBackground = () => {
+  const [particles, setParticles] = useState<ParticleStyle[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      const generateParticles = () => {
+        return Array.from({ length: 20 }).map(() => ({
           width: `${Math.random() * 3 + 1}px`,
           height: `${Math.random() * 3 + 1}px`,
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
           animationDuration: `${Math.random() * 20 + 10}s`,
           animationDelay: `${Math.random() * -20}s`,
-        }}
-      />
-    ))}
-    <style jsx>{`
-      @keyframes particle {
-        0% { transform: translate(0, 0) scale(1); opacity: 1; }
-        100% { transform: translate(${(Math.random() - 0.5) * 500}px, ${(Math.random() - 0.5) * 500}px) scale(${Math.random() * 1.5}); opacity: 0; }
-      }
-      .animate-particle {
-        animation-name: particle;
-        animation-iteration-count: infinite;
-      }
-    `}</style>
-  </div>
-);
+          transformX: (Math.random() - 0.5) * 500,
+          transformY: (Math.random() - 0.5) * 500,
+          scale: Math.random() * 1.5,
+        }));
+      };
+      setParticles(generateParticles());
+    }
+  }, [isMounted]);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden">
+      {particles.map((style, i) => (
+        <div
+          key={i}
+          className="absolute bg-primary/20 rounded-full animate-particle"
+          style={{
+            width: style.width,
+            height: style.height,
+            left: style.left,
+            top: style.top,
+            animationDuration: style.animationDuration,
+            animationDelay: style.animationDelay,
+            '--transform-x': `${style.transformX}px`,
+            '--transform-y': `${style.transformY}px`,
+            '--transform-scale': `${style.scale}`,
+          } as React.CSSProperties}
+        />
+      ))}
+      <style jsx>{`
+        @keyframes particle {
+          0% { transform: translate(0, 0) scale(1); opacity: 1; }
+          100% { transform: translate(var(--transform-x), var(--transform-y)) scale(var(--transform-scale)); opacity: 0; }
+        }
+        .animate-particle {
+          animation-name: particle;
+          animation-iteration-count: infinite;
+        }
+      `}</style>
+    </div>
+  );
+};
+
 
 export default function Hero() {
   const scrollTo = (id: string) => {
