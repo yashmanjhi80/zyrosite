@@ -9,7 +9,6 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
@@ -65,19 +64,14 @@ export default function Header() {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : link.href ? (
-              <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-primary">{link.label}</Link>
             ) : (
              <button key={link.id} onClick={() => scrollTo(link.id!)} className="text-muted-foreground transition-colors hover:text-primary">{link.label}</button>
             )
           ))}
         </nav>
         <div className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
           <Button asChild>
-            <Link href="/register">Get API Key</Link>
+            <Link href="https://t.me/mrzyro" target="_blank">Get API Key</Link>
           </Button>
         </div>
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -110,19 +104,14 @@ export default function Header() {
                         ))}
                       </div>
                     </div>
-                  ) : link.href ? (
-                    <Link key={link.label} href={link.href} className="text-left text-muted-foreground transition-colors hover:text-primary" onClick={() => setIsOpen(false)}>{link.label}</Link>
                   ) : (
                     <button key={link.id} onClick={() => scrollTo(link.id!)} className="text-left text-muted-foreground transition-colors hover:text-primary">{link.label}</button>
                   )
                 ))}
               </nav>
               <div className="mt-auto space-y-2">
-                 <Button variant="outline" className="w-full" asChild>
-                    <Link href="/login">Login</Link>
-                 </Button>
                  <Button className="w-full" asChild>
-                    <Link href="/register">Get API Key</Link>
+                    <Link href="https://t.me/mrzyro" target="_blank">Get API Key</Link>
                  </Button>
               </div>
             </div>

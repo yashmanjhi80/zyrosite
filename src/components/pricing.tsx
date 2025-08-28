@@ -2,20 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/hooks/use-toast"
 import { plans } from "@/lib/data"
 import { CheckCircle2 } from "lucide-react"
+import Link from "next/link"
 
 export default function Pricing() {
-  const { toast } = useToast();
-
-  const handlePurchaseClick = (planName: string) => {
-    toast({
-      title: `Redirecting to register!`,
-      description: "You can sign up and get your API key.",
-    });
-    // In a real app, you'd redirect to /register?plan=...
-  };
 
   return (
     <section id="pricing" className="py-20 md:py-32">
@@ -41,9 +32,9 @@ export default function Pricing() {
                 <CardTitle className="text-2xl font-bold font-headline">{plan.name}</CardTitle>
                 <CardDescription>
                     <span className="text-4xl font-bold text-foreground font-code">
-                        {plan.priceINR === 0 ? '₹0' : `₹${plan.priceINR}`}
+                        {`₹${plan.priceINR}`}
                     </span>
-                    <span className="text-muted-foreground">/mo</span>
+                    <span className="text-muted-foreground">{plan.duration}</span>
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-1">
@@ -60,9 +51,9 @@ export default function Pricing() {
                 <Button 
                   className="w-full" 
                   variant={plan.recommended ? 'default' : 'outline'}
-                  onClick={() => handlePurchaseClick(plan.name)}
+                  asChild
                 >
-                  Get API Key
+                  <Link href="https://t.me/mrzyro" target="_blank">Get API Key</Link>
                 </Button>
               </CardFooter>
             </Card>

@@ -3,25 +3,29 @@ import { Code, DownloadCloud, Gauge, LifeBuoy, type LucideIcon } from "lucide-re
 interface Plan {
   name: string
   priceINR: number
+  duration: string
   features: string[]
   recommended?: boolean
 }
 
 export const plans: Plan[] = [
   { 
-    name: "Free", 
-    priceINR: 0, 
-    features: ["1,000 requests/month", "MP3 Audio Downloads", "MP4 Video (up to 480p)", "Community Support"],
+    name: "Standard", 
+    priceINR: 100, 
+    duration: "/mo",
+    features: ["Unlimited requests", "MP3 Audio Downloads", "MP4 Video (up to 4K)", "Dedicated 24/7 Support", "Custom Integrations"],
+  },
+  { 
+    name: "Basic", 
+    priceINR: 249, 
+    duration: "/3mo",
+    features: ["Unlimited requests", "MP3 Audio Downloads", "MP4 Video (up to 4K)", "Dedicated 24/7 Support", "Custom Integrations"],
+    recommended: true
   },
   { 
     name: "Pro", 
     priceINR: 499, 
-    features: ["10,000 requests/month", "MP3 Audio Downloads", "MP4 Video (up to 4K)", "Email Support", "Access to Beta Features"],
-    recommended: true
-  },
-  { 
-    name: "Enterprise", 
-    priceINR: 1999, 
+    duration: "/6mo",
     features: ["Unlimited requests", "MP3 Audio Downloads", "MP4 Video (up to 4K)", "Dedicated 24/7 Support", "Custom Integrations"],
   }
 ]

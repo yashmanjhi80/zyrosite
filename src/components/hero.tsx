@@ -78,11 +78,11 @@ export default function Hero() {
         <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl">
           A powerful API to download YouTube audio and video with ease, up to 4K. Reliable, fast, and easy to integrate into your application or bot.
         </p>
-        <div className="mt-8 flex justify-center gap-4">
-          <Button size="lg" onClick={() => scrollTo('pricing')} className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg">
-            Get Started
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg w-full sm:w-auto">
+            <Link href="https://t.me/mrzyro" target="_blank">Get Started</Link>
           </Button>
-          <Button size="lg" variant="outline" asChild className="font-semibold px-8 py-6 text-lg border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+          <Button size="lg" variant="outline" asChild className="font-semibold px-8 py-6 text-lg border-accent text-accent hover:bg-accent hover:text-accent-foreground w-full sm:w-auto">
             <Link href="/documentation">View Docs</Link>
           </Button>
         </div>
