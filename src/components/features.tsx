@@ -7,10 +7,10 @@ export default function Features() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
-            Everything You Need for a Perfect Server
+            Powerful Features for Your Application
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            We've packed our hosting with features to give you the best, most seamless Minecraft experience possible.
+            Our API is built to be simple, reliable, and powerful, giving you the tools you need to succeed.
           </p>
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">

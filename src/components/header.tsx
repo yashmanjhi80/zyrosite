@@ -15,7 +15,10 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsOpen(false);
   };
 
@@ -30,7 +33,7 @@ export default function Header() {
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Rocket className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold text-foreground font-headline">Zyro Networks</span>
+          <span className="text-xl font-bold text-foreground font-headline">Zyro API</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navLinks.map(link => (
@@ -42,7 +45,7 @@ export default function Header() {
             <Link href="/login">Login</Link>
           </Button>
           <Button asChild>
-            <Link href="/register">Register</Link>
+            <Link href="/register">Get API Key</Link>
           </Button>
         </div>
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -57,7 +60,7 @@ export default function Header() {
               <div className="flex justify-between items-center mb-8">
                 <Link href="/" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}>
                   <Rocket className="h-6 w-6 text-primary" />
-                  <span className="text-xl font-bold text-foreground font-headline">Zyro Networks</span>
+                  <span className="text-xl font-bold text-foreground font-headline">Zyro API</span>
                 </Link>
                 <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                   <X className="h-6 w-6" />
@@ -74,7 +77,7 @@ export default function Header() {
                     <Link href="/login">Login</Link>
                  </Button>
                  <Button className="w-full" asChild>
-                    <Link href="/register">Register</Link>
+                    <Link href="/register">Get API Key</Link>
                  </Button>
               </div>
             </div>

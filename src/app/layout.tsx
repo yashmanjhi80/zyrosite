@@ -5,8 +5,8 @@ import { Toaster } from '@/components/ui/toaster';
 import ChatAssistant from '@/components/chat-assistant';
 
 export const metadata: Metadata = {
-  title: 'Zyro Networks - Blazing-fast Minecraft Hosting',
-  description: 'Affordable, low-latency Minecraft hosting with instant setup, DDoS protection, and an easy control panel.',
+  title: 'Zyro API - Simple & Reliable Song API',
+  description: 'A powerful API to download YouTube audio and video with ease. Reliable, fast, and easy to integrate.',
 };
 
 export default function RootLayout({

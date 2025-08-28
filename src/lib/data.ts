@@ -1,21 +1,29 @@
-import { Rocket, Gauge, ShieldCheck, LifeBuoy, type LucideIcon } from "lucide-react"
+import { Code, DownloadCloud, Gauge, LifeBuoy, type LucideIcon } from "lucide-react"
 
 interface Plan {
   name: string
-  ramGB: number
-  vcpu: number
-  storageGB: number
   priceINR: number
-  priceUSD: number
   features: string[]
+  recommended?: boolean
 }
 
 export const plans: Plan[] = [
-  { name: "Dirt", ramGB: 1, vcpu: 1, storageGB: 10, priceINR: 99, priceUSD: 1.49, features: ["Paper/Purpur ready", "For 1-5 players"] },
-  { name: "Stone", ramGB: 2, vcpu: 1, storageGB: 20, priceINR: 199, priceUSD: 2.49, features: ["Modpack friendly", "Great for starters"] },
-  { name: "Iron", ramGB: 4, vcpu: 2, storageGB: 40, priceINR: 349, priceUSD: 4.49, features: ["Handles most mods", "Daily backups"] },
-  { name: "Diamond", ramGB: 8, vcpu: 3, storageGB: 60, priceINR: 649, priceUSD: 7.99, features: ["For large communities", "1-click installers"] },
-  { name: "Netherite", ramGB: 16, vcpu: 4, storageGB: 100, priceINR: 1199, priceUSD: 13.99, features: ["Heavy modpacks", "Priority support"] }
+  { 
+    name: "Free", 
+    priceINR: 0, 
+    features: ["1,000 requests/month", "MP3 Audio Downloads", "MP4 Video (up to 480p)", "Community Support"],
+  },
+  { 
+    name: "Pro", 
+    priceINR: 499, 
+    features: ["10,000 requests/month", "MP3 Audio Downloads", "MP4 Video (up to 480p)", "Email Support", "Access to Beta Features"],
+    recommended: true
+  },
+  { 
+    name: "Enterprise", 
+    priceINR: 1999, 
+    features: ["Unlimited requests", "MP3 Audio Downloads", "MP4 Video (up to 480p)", "Dedicated 24/7 Support", "Custom Integrations"],
+  }
 ]
 
 interface Feature {
@@ -26,24 +34,24 @@ interface Feature {
 
 export const features: Feature[] = [
   {
-    icon: Rocket,
-    title: "Instant Provisioning",
-    description: "Your server is up and running minutes after payment. No waiting, just playing.",
+    icon: DownloadCloud,
+    title: "Audio & Video",
+    description: "Easily download YouTube content as MP3 (192kbps) or MP4 (up to 480p) files for your application.",
   },
   {
     icon: Gauge,
-    title: "Blazing-Fast Hardware",
-    description: "We use high-performance Ryzen CPUs and NVMe SSDs to ensure zero lag for you and your players.",
+    title: "Asynchronous Processing",
+    description: "Requests are handled in the background. Poll the endpoint to get progress updates without blocking your app.",
   },
   {
-    icon: ShieldCheck,
-    title: "DDoS Protection",
-    description: "Our network is equipped with robust DDoS mitigation to keep your server safe from attacks.",
+    icon: Code,
+    title: "Simple Integration",
+    description: "With straightforward GET endpoints and clear documentation, you can integrate our API in minutes.",
   },
   {
     icon: LifeBuoy,
-    title: "24/7 Expert Support",
-    description: "Got an issue? Our team of Minecraft experts is available around the clock to help you out.",
+    title: "Reliable & Supported",
+    description: "We provide robust infrastructure and multiple support tiers to ensure your service remains online and reliable.",
   },
 ]
 
@@ -54,23 +62,23 @@ interface Faq {
 
 export const faqs: Faq[] = [
     {
-        question: "How fast is the server setup?",
-        answer: "Setup is fully automated and instant. Your Minecraft server will be ready just a few minutes after your payment is successfully processed. You'll receive an email with all the details you need to get started right away."
+        question: "How do I authenticate my requests?",
+        answer: "Every request to the API must include a valid API key in the 'x-api-key' header. You can get your key by signing up for a plan on our pricing page."
     },
     {
-        question: "Can I upload my own modpacks or plugins?",
-        answer: "Absolutely! You have full SFTP access to your server files. You can easily upload any modpacks, plugins, or custom worlds. We also offer one-click installers for popular modpacks like Forge and Fabric to make it even easier."
+        question: "What is the difference between the /audio and /beta endpoints?",
+        answer: "The `/audio/<video_id>` endpoint is for downloading the audio track as an MP3 file. The `/beta/<video_id>` endpoint is for downloading the video in MP4 format, up to 480p resolution."
     },
     {
-        question: "Is there DDoS protection included?",
-        answer: "Yes, all our hosting plans come with enterprise-grade DDoS protection at no extra cost. This helps to keep your server online and protected from various types of network attacks, ensuring a smooth gameplay experience."
+        question: "What does the 'downloading' status mean?",
+        answer: "When you request a file that hasn't been downloaded yet, the API will start fetching it in the background. The status will be 'downloading', and the response will include a 'progress' field. You should poll the same endpoint until the status changes to 'success'."
     },
     {
-        question: "What kind of hardware do you use?",
-        answer: "We use top-of-the-line hardware to ensure the best performance. Our nodes are powered by AMD Ryzen processors and enterprise NVMe SSDs, which means faster world loading, smoother gameplay, and better overall server responsiveness."
+        question: "What are the `audio_url` and `video_sd` values?",
+        answer: "These are base64-encoded URLs that point to the final downloadable file. You need to decode the value from the API response before you can use the URL to download the MP3 or MP4 file."
     },
     {
-        question: "Do you offer refunds?",
-        answer: "Yes, we offer a 48-hour money-back guarantee on your first purchase. If you're not satisfied with our service for any reason, just contact our support team within the first two days for a full refund, no questions asked."
+        question: "What are the rate limits for the API?",
+        answer: "Rate limits depend on the plan you choose. Our Free plan has a limit of 1,000 requests per month, while paid plans offer significantly more. Please check our pricing page for detailed information on rate limits and other features."
     },
 ]

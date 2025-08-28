@@ -11,9 +11,10 @@ export default function Pricing() {
 
   const handlePurchaseClick = (planName: string) => {
     toast({
-      title: `Added ${planName} to cart!`,
-      description: "You can proceed to checkout from your cart.",
+      title: `Redirecting to register!`,
+      description: "You can sign up and get your API key.",
     });
+    // In a real app, you'd redirect to /register?plan=...
   };
 
   return (
@@ -24,43 +25,33 @@ export default function Pricing() {
             Choose Your Perfect Plan
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Simple, transparent pricing. All plans come with our core features, and you can upgrade any time.
+            Simple, transparent pricing for projects of all sizes. Start for free and upgrade as you grow.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 lg:grid-cols-3 xl:grid-cols-5 md:grid-cols-2">
+        <div className="mt-12 grid gap-8 lg:grid-cols-3">
           {plans.map((plan) => (
             <Card 
               key={plan.name} 
-              className={`flex flex-col border-2 transition-all duration-300 hover:border-primary ${plan.name === 'Iron' ? 'border-primary' : 'border-border/60'}`}
+              className={`flex flex-col border-2 transition-all duration-300 hover:border-primary ${plan.recommended ? 'border-primary' : 'border-border/60'}`}
             >
-              {plan.name === 'Iron' && (
+              {plan.recommended && (
                 <div className="text-center py-1 bg-primary text-primary-foreground text-sm font-semibold">Most Popular</div>
               )}
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl font-bold font-headline">{plan.name}</CardTitle>
                 <CardDescription>
-                    <span className="text-4xl font-bold text-foreground font-code">₹{plan.priceINR}</span>
+                    <span className="text-4xl font-bold text-foreground font-code">
+                        {plan.priceINR === 0 ? '₹0' : `₹${plan.priceINR}`}
+                    </span>
                     <span className="text-muted-foreground">/mo</span>
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-1">
                 <ul className="space-y-3 text-sm">
-                  <li className="flex items-center">
-                    <CheckCircle2 className="h-5 w-5 text-primary mr-2" />
-                    <span><span className="font-bold">{plan.ramGB} GB</span> RAM</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="h-5 w-5 text-primary mr-2" />
-                    <span><span className="font-bold">{plan.vcpu} vCPU</span> Core</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="h-5 w-5 text-primary mr-2" />
-                    <span><span className="font-bold">{plan.storageGB} GB</span> NVMe Storage</span>
-                  </li>
                   {plan.features.map((feature, i) => (
                      <li key={i} className="flex items-center">
-                        <CheckCircle2 className="h-5 w-5 text-muted-foreground/70 mr-2" />
-                        <span className="text-muted-foreground">{feature}</span>
+                        <CheckCircle2 className="h-5 w-5 text-primary mr-2" />
+                        <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -68,10 +59,10 @@ export default function Pricing() {
               <CardFooter>
                 <Button 
                   className="w-full" 
-                  variant={plan.name === 'Iron' ? 'default' : 'outline'}
+                  variant={plan.recommended ? 'default' : 'outline'}
                   onClick={() => handlePurchaseClick(plan.name)}
                 >
-                  Purchase Plan
+                  Get API Key
                 </Button>
               </CardFooter>
             </Card>

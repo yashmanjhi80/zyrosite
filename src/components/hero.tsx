@@ -82,17 +82,17 @@ export default function Hero() {
       <ParticleBackground />
       <div className="container mx-auto px-4 relative z-10">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl font-headline">
-          Blazing-Fast Minecraft Servers
+          Simple & Reliable Song API
         </h1>
         <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl">
-          Instant setup. Unbeatable performance. Lag-free gameplay guaranteed. Power up your world with Zyro Networks.
+          A powerful API to download YouTube audio and video with ease. Reliable, fast, and easy to integrate into your application.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Button size="lg" onClick={() => scrollTo('pricing')} className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg">
-            Start Your Server
+            Get Started
           </Button>
-          <Button size="lg" variant="outline" onClick={() => scrollTo('features')} className="font-semibold px-8 py-6 text-lg border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-            View Features
+          <Button size="lg" variant="outline" onClick={() => scrollTo('faq')} className="font-semibold px-8 py-6 text-lg border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+            View Docs
           </Button>
         </div>
       </div>

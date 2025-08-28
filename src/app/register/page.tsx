@@ -26,7 +26,7 @@ export default function RegisterPage() {
       if (email && password) {
         toast({
           title: 'Registration Successful',
-          description: 'Your account has been created. Please log in.',
+          description: 'Your API key is now available in your account dashboard.',
         });
         // Redirect to login page logic here
       } else {
@@ -45,8 +45,8 @@ export default function RegisterPage() {
       <main className="flex-1 flex items-center justify-center bg-secondary">
         <Card className="w-full max-w-sm">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Register</CardTitle>
-            <CardDescription>Create your account to get started.</CardDescription>
+            <CardTitle className="text-2xl">Get Your API Key</CardTitle>
+            <CardDescription>Create an account to start using the API.</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">

@@ -15,7 +15,7 @@ export default function Faq() {
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Have questions? We've got answers. If you can't find what you're looking for, our support team is always here to help.
+            Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
           </p>
         </div>
         <div className="mt-12 max-w-3xl mx-auto">

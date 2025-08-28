@@ -76,24 +76,24 @@ export default function ChatAssistant() {
   const getCannedResponse = (question: string) => {
     const q = question.toLowerCase();
     if (q.includes('price') || q.includes('plan')) {
-      return "We have several plans available! Our 'Stone' plan at $2.49/month is very popular for small groups. For larger communities, the 'Netherite' plan offers 16GB RAM for the ultimate performance. You can see all options on our pricing section.";
+      return "We have several plans! The Free plan is great for testing. Our 'Pro' plan at ₹499/month offers 10,000 requests per month, perfect for growing applications. You can see all options on our pricing section.";
     }
-    if (q.includes('ddos')) {
-      return "Yes, all our plans come with network-level DDoS protection to keep your server online and safe from attacks.";
+    if (q.includes('api key')) {
+      return "You can get your API key by registering for an account and choosing a plan. Once you sign up, you'll find your key in your account dashboard.";
     }
-    if (q.includes('setup') || q.includes('instant')) {
-      return "Server setup is instant! As soon as your payment is confirmed, our system automatically provisions your server and you'll receive an email with your details within minutes.";
+    if (q.includes('rate limit')) {
+      return "Yes, each plan has a specific rate limit to ensure fair usage. For example, the Pro plan has a rate limit of 60 requests per minute. You can find details for each plan on our pricing page.";
     }
     if (q.includes('support')) {
-        return "We offer 24/7 expert support via our ticketing system in the client area. Our team is always ready to help you with any technical or billing questions.";
+        return "We offer 24/7 expert support via email for our Pro and Enterprise customers. Free plan users can find help in our community forums and documentation.";
     }
-    return "Thanks for your question! I can help with topics like plans, pricing, features, and basic troubleshooting. How can I assist you today?";
+    return "Thanks for your question! I can help with topics like plans, pricing, API features, and rate limits. How can I assist you today?";
   };
   
   const quickQuestions = [
-    "What's your most popular plan?",
-    "Do you offer DDoS protection?",
-    "How fast is the server setup?",
+    "What are the pricing plans?",
+    "How do I get an API key?",
+    "Are there any rate limits?",
   ];
 
   return (
@@ -120,7 +120,7 @@ export default function ChatAssistant() {
                         <AvatarImage src="https://placehold.co/100x100/0B0F13/00E08F" alt="AI Assistant" />
                         <AvatarFallback>AI</AvatarFallback>
                     </Avatar>
-                    <h3 className="text-lg font-semibold text-foreground">Welcome to ZyroHost!</h3>
+                    <h3 className="text-lg font-semibold text-foreground">Welcome to Zyro API!</h3>
                     <p className="text-sm">I can help with questions about our plans, features, and more. What are you looking for?</p>
                     <div className="mt-6 space-y-2 w-full">
                         {quickQuestions.map((q, i) => (
