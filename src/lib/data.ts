@@ -16,13 +16,13 @@ export const plans: Plan[] = [
   { 
     name: "Pro", 
     priceINR: 499, 
-    features: ["10,000 requests/month", "MP3 Audio Downloads", "MP4 Video (up to 480p)", "Email Support", "Access to Beta Features"],
+    features: ["10,000 requests/month", "MP3 Audio Downloads", "MP4 Video (up to 4K)", "Email Support", "Access to Beta Features"],
     recommended: true
   },
   { 
     name: "Enterprise", 
     priceINR: 1999, 
-    features: ["Unlimited requests", "MP3 Audio Downloads", "MP4 Video (up to 480p)", "Dedicated 24/7 Support", "Custom Integrations"],
+    features: ["Unlimited requests", "MP3 Audio Downloads", "MP4 Video (up to 4K)", "Dedicated 24/7 Support", "Custom Integrations"],
   }
 ]
 
@@ -35,8 +35,8 @@ interface Feature {
 export const features: Feature[] = [
   {
     icon: DownloadCloud,
-    title: "Audio & Video",
-    description: "Easily download YouTube content as MP3 (192kbps) or MP4 (up to 480p) files for your application.",
+    title: "High-Quality Downloads",
+    description: "Easily download YouTube content as MP3 (192kbps) or MP4 (up to 4K) files for your application.",
   },
   {
     icon: Gauge,
@@ -66,8 +66,8 @@ export const faqs: Faq[] = [
         answer: "Every request to the API must include a valid API key in the 'x-api-key' header. You can get your key by signing up for a plan on our pricing page."
     },
     {
-        question: "What is the difference between the /audio and /beta endpoints?",
-        answer: "The `/audio/<video_id>` endpoint is for downloading the audio track as an MP3 file. The `/beta/<video_id>` endpoint is for downloading the video in MP4 format, up to 480p resolution."
+        question: "What video quality is supported?",
+        answer: "Our Pro and Enterprise plans support video downloads up to 4K resolution. The Free plan is limited to 480p."
     },
     {
         question: "What does the 'downloading' status mean?",

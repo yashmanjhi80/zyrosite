@@ -1,13 +1,13 @@
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import ApiDocumentation from '@/components/api-documentation';
+import BotDocumentation from '@/components/bot-documentation';
 
-export default function DocumentationPage() {
+export default function BotDocumentationPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <ApiDocumentation />
+        <BotDocumentation />
       </main>
       <Footer />
     </div>

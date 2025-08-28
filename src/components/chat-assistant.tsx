@@ -76,16 +76,19 @@ export default function ChatAssistant() {
   const getCannedResponse = (question: string) => {
     const q = question.toLowerCase();
     if (q.includes('price') || q.includes('plan')) {
-      return "We have several plans! The Free plan is great for testing. Our 'Pro' plan at ₹499/month offers 10,000 requests per month, perfect for growing applications. You can see all options on our pricing section.";
+      return "We have several plans! The Free plan is great for testing. Our 'Pro' plan at ₹499/month offers 10,000 requests per month and 4K video downloads. You can see all options on our pricing section.";
     }
     if (q.includes('api key')) {
       return "You can get your API key by registering for an account and choosing a plan. Once you sign up, you'll find your key in your account dashboard.";
     }
     if (q.includes('rate limit')) {
-      return "Yes, each plan has a specific rate limit to ensure fair usage. For example, the Pro plan has a rate limit of 60 requests per minute. You can find details for each plan on our pricing page.";
+      return "Yes, each plan has a specific rate limit to ensure fair usage. For example, the Pro plan has a rate limit of 10,000 requests per month. You can find details for each plan on our pricing page.";
     }
     if (q.includes('support')) {
         return "We offer 24/7 expert support via email for our Pro and Enterprise customers. Free plan users can find help in our community forums and documentation.";
+    }
+     if (q.includes('video quality') || q.includes('4k')) {
+        return "Our Pro and Enterprise plans support video downloads up to 4K quality! The Free plan is limited to 480p.";
     }
     return "Thanks for your question! I can help with topics like plans, pricing, API features, and rate limits. How can I assist you today?";
   };
@@ -93,7 +96,7 @@ export default function ChatAssistant() {
   const quickQuestions = [
     "What are the pricing plans?",
     "How do I get an API key?",
-    "Are there any rate limits?",
+    "What video quality do you support?",
   ];
 
   return (

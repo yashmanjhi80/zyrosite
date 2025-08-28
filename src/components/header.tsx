@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet"
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,14 @@ export default function Header() {
     { id: 'features', label: 'Features' },
     { id: 'pricing', label: 'Pricing' },
     { id: 'faq', label: 'FAQ' },
-    { href: '/documentation', label: 'Documentation' },
+    { 
+      label: 'Documentation',
+      isDropdown: true,
+      items: [
+        { href: '/documentation', label: 'API Docs' },
+        { href: '/documentation/bot', label: 'Bot Docs' },
+      ]
+    },
   ];
 
   return (
@@ -44,7 +52,20 @@ export default function Header() {
         </Link>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navLinks.map(link => (
-            link.href ? (
+            link.isDropdown ? (
+              <DropdownMenu key={link.label}>
+                <DropdownMenuTrigger className="text-muted-foreground transition-colors hover:text-primary outline-none">
+                  {link.label}
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {link.items?.map(item => (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link href={item.href}>{item.label}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : link.href ? (
               <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-primary">{link.label}</Link>
             ) : (
              <button key={link.id} onClick={() => scrollTo(link.id!)} className="text-muted-foreground transition-colors hover:text-primary">{link.label}</button>
@@ -80,7 +101,16 @@ export default function Header() {
               </div>
               <nav className="flex flex-col space-y-4 text-lg">
                 {navLinks.map(link => (
-                  link.href ? (
+                  link.isDropdown ? (
+                    <div key={link.label}>
+                      <span className="text-left text-muted-foreground font-semibold">{link.label}</span>
+                      <div className="flex flex-col space-y-2 mt-2 pl-4">
+                        {link.items?.map(item => (
+                          <Link key={item.href} href={item.href} className="text-left text-muted-foreground transition-colors hover:text-primary" onClick={() => setIsOpen(false)}>{item.label}</Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : link.href ? (
                     <Link key={link.label} href={link.href} className="text-left text-muted-foreground transition-colors hover:text-primary" onClick={() => setIsOpen(false)}>{link.label}</Link>
                   ) : (
                     <button key={link.id} onClick={() => scrollTo(link.id!)} className="text-left text-muted-foreground transition-colors hover:text-primary">{link.label}</button>

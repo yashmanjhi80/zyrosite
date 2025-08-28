@@ -8,17 +8,17 @@ const CodeBlock = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-export default function Documentation() {
+export default function ApiDocumentation() {
   return (
     <section id="documentation" className="py-20 md:py-32">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-headline">
-              <span role="img" aria-label="headphones" className="mr-2">🎧</span> YouTube Download API
+              <span role="img" aria-label="headphones" className="mr-2">🎧</span> API Documentation
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Download YouTube Audio (MP3) and Video (MP4 up to 480p) with ease.
+              Download YouTube Audio (MP3) and Video (MP4 up to 4K) with ease.
             </p>
           </div>
 
@@ -96,7 +96,7 @@ export default function Documentation() {
             <CardHeader>
               <CardTitle className="flex items-center text-2xl">
                 <Video className="mr-3 text-primary" />
-                Get Video (MP4 ≤480p)
+                Get Video (MP4)
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -105,7 +105,7 @@ export default function Documentation() {
                     <p className="ml-2 font-code">/beta/&lt;video_id&gt;</p>
                 </div>
                 <p className="text-muted-foreground mb-4">
-                    Starts or fetches the download of a YouTube video in MP4 format (480p or lower).
+                    Starts or fetches the download of a YouTube video in MP4 format (up to 4K).
                 </p>
 
                 <h4 className="font-semibold mt-6 mb-2">✅ Success Response (already downloaded)</h4>
