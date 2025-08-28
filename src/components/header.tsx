@@ -10,14 +10,20 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const scrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+    if (pathname !== '/') {
+      window.location.href = `/#${id}`;
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsOpen(false);
   };
@@ -26,6 +32,7 @@ export default function Header() {
     { id: 'features', label: 'Features' },
     { id: 'pricing', label: 'Pricing' },
     { id: 'faq', label: 'FAQ' },
+    { href: '/documentation', label: 'Documentation' },
   ];
 
   return (
@@ -37,7 +44,11 @@ export default function Header() {
         </Link>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navLinks.map(link => (
-             <button key={link.id} onClick={() => scrollTo(link.id)} className="text-muted-foreground transition-colors hover:text-primary">{link.label}</button>
+            link.href ? (
+              <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-primary">{link.label}</Link>
+            ) : (
+             <button key={link.id} onClick={() => scrollTo(link.id!)} className="text-muted-foreground transition-colors hover:text-primary">{link.label}</button>
+            )
           ))}
         </nav>
         <div className="hidden md:flex items-center space-x-2">
@@ -69,7 +80,11 @@ export default function Header() {
               </div>
               <nav className="flex flex-col space-y-4 text-lg">
                 {navLinks.map(link => (
-                    <button key={link.id} onClick={() => scrollTo(link.id)} className="text-left text-muted-foreground transition-colors hover:text-primary">{link.label}</button>
+                  link.href ? (
+                    <Link key={link.label} href={link.href} className="text-left text-muted-foreground transition-colors hover:text-primary" onClick={() => setIsOpen(false)}>{link.label}</Link>
+                  ) : (
+                    <button key={link.id} onClick={() => scrollTo(link.id!)} className="text-left text-muted-foreground transition-colors hover:text-primary">{link.label}</button>
+                  )
                 ))}
               </nav>
               <div className="mt-auto space-y-2">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
+import Link from 'next/link';
 
 interface ParticleStyle {
   width: string;
@@ -17,34 +18,24 @@ interface ParticleStyle {
 
 const ParticleBackground = () => {
   const [particles, setParticles] = useState<ParticleStyle[]>([]);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const generateParticles = () => {
+      return Array.from({ length: 20 }).map(() => ({
+        width: `${Math.random() * 3 + 1}px`,
+        height: `${Math.random() * 3 + 1}px`,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDuration: `${Math.random() * 20 + 10}s`,
+        animationDelay: `${Math.random() * -20}s`,
+        '--transform-x': `${(Math.random() - 0.5) * 500}px`,
+        '--transform-y': `${(Math.random() - 0.5) * 500}px`,
+        '--transform-scale': Math.random() * 1.5,
+      }));
+    };
+    setParticles(generateParticles());
   }, []);
 
-  useEffect(() => {
-    if (isMounted) {
-      const generateParticles = () => {
-        return Array.from({ length: 20 }).map(() => ({
-          width: `${Math.random() * 3 + 1}px`,
-          height: `${Math.random() * 3 + 1}px`,
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          animationDuration: `${Math.random() * 20 + 10}s`,
-          animationDelay: `${Math.random() * -20}s`,
-          '--transform-x': `${(Math.random() - 0.5) * 500}px`,
-          '--transform-y': `${(Math.random() - 0.5) * 500}px`,
-          '--transform-scale': Math.random() * 1.5,
-        }));
-      };
-      setParticles(generateParticles());
-    }
-  }, [isMounted]);
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
     <>
@@ -91,8 +82,8 @@ export default function Hero() {
           <Button size="lg" onClick={() => scrollTo('pricing')} className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg">
             Get Started
           </Button>
-          <Button size="lg" variant="outline" onClick={() => scrollTo('faq')} className="font-semibold px-8 py-6 text-lg border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-            View Docs
+          <Button size="lg" variant="outline" asChild className="font-semibold px-8 py-6 text-lg border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+            <Link href="/documentation">View Docs</Link>
           </Button>
         </div>
       </div>
