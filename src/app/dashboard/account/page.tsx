@@ -1,0 +1,98 @@
+'use client'
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter
+} from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useAuth } from "@/components/auth-provider"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+
+export default function AccountPage() {
+  const { user } = useAuth();
+
+  return (
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold tracking-tight">Account</h1>
+      
+      <Card>
+        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <Avatar className="h-20 w-20">
+                <AvatarImage src={user?.photoURL ?? ''} alt={user?.displayName ?? 'User'} />
+                <AvatarFallback className="text-2xl">{user?.displayName?.charAt(0).toUpperCase()}</AvatarFallback>
+            </Avatar>
+            <div className="flex-1">
+                <CardTitle className="text-2xl">{user?.displayName}</CardTitle>
+                <CardDescription>Manage your profile and account settings.</CardDescription>
+            </div>
+            <Button variant="outline">Change Avatar</Button>
+        </CardHeader>
+        <CardContent className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Profile Details</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="displayName">Display Name</Label>
+                            <Input id="displayName" defaultValue={user?.displayName ?? ''} />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="email">Email Address</Label>
+                            <Input id="email" type="email" defaultValue={user?.email ?? ''} disabled />
+                        </div>
+                         <div className="space-y-2">
+                            <Label>Current Plan</Label>
+                            <Input defaultValue="Pro Plan" disabled />
+                        </div>
+                    </CardContent>
+                    <CardFooter>
+                        <Button>Save Changes</Button>
+                    </CardFooter>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Password & Security</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="currentPassword">Current Password</Label>
+                            <Input id="currentPassword" type="password" />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="newPassword">New Password</Label>
+                            <Input id="newPassword" type="password" />
+                        </div>
+                         <div className="space-y-2">
+                            <Label htmlFor="confirmPassword">Confirm New Password</Label>
+                            <Input id="confirmPassword" type="password" />
+                        </div>
+                    </CardContent>
+                    <CardFooter>
+                        <Button>Update Password</Button>
+                    </CardFooter>
+                </Card>
+            </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-destructive">
+          <CardHeader>
+              <CardTitle className="text-destructive">Danger Zone</CardTitle>
+              <CardDescription>These actions are irreversible. Please be certain.</CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-between items-center">
+              <p className="text-sm">Delete your account and all associated data.</p>
+              <Button variant="destructive">Delete Account</Button>
+          </CardContent>
+      </Card>
+    </div>
+  )
+}
