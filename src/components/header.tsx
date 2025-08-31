@@ -15,12 +15,12 @@ import { useAuth } from './auth-provider';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Skeleton } from './ui/skeleton';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const { user } = useAuth();
-  const router = usePathname();
+  const { user, loading } = useAuth();
 
   const handleSignOut = async () => {
     await signOut(auth);
@@ -80,7 +80,9 @@ export default function Header() {
           ))}
         </nav>
         <div className="hidden md:flex items-center space-x-2">
-          {user ? (
+          {loading ? (
+            <Skeleton className="h-10 w-24" />
+          ) : user ? (
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -146,7 +148,9 @@ export default function Header() {
                 ))}
               </nav>
               <div className="mt-auto space-y-2">
-                 {user ? (
+                 {loading ? (
+                    <Skeleton className="h-10 w-full" />
+                 ) : user ? (
                    <Button className="w-full" onClick={handleSignOut}>Log Out</Button>
                  ) : (
                    <Button className="w-full" asChild>
