@@ -9,56 +9,89 @@ interface Plan {
 }
 
 export const plans: Plan[] = [
-  { 
-    name: "Free", 
-    priceINR: 'Free', 
-    duration: "/month",
-    features: ["100 daily API requests", "2 daily video requests", "30 days validity"],
-  },
-  { 
-    name: "Basic", 
-    priceINR: 49, 
-    duration: "/month",
-    features: ["2,000 daily API requests", "40 daily video requests", "30 days validity"],
-  },
-  { 
-    name: "Starter", 
-    priceINR: 109, 
-    duration: "/month",
-    features: ["5,000 daily API requests", "100 daily video requests", "30 days validity"],
-  },
-  { 
-    name: "Standard", 
-    priceINR: 219, 
-    duration: "/month",
-    features: ["10,000 daily API requests", "200 daily video requests", "30 days validity"],
-    recommended: true
-  },
-  { 
-    name: "Pro", 
-    priceINR: 439, 
-    duration: "/month",
-    features: ["25,000 daily API requests", "500 daily video requests", "30 days validity"],
-  },
-  { 
-    name: "Business", 
-    priceINR: 889, 
-    duration: "/month",
-    features: ["50,000 daily API requests", "1,000 daily video requests", "30 days validity"],
+  {
+    name: 'Free',
+    priceINR: 'Free',
+    duration: '/month',
+    features: [
+      '100 daily API requests',
+      '2 daily video requests',
+      '30 days validity',
+    ],
   },
   {
-    name: "Enterprise",
+    name: 'Basic',
+    priceINR: 49,
+    duration: '/month',
+    features: [
+      '2,000 daily API requests',
+      '40 daily video requests',
+      '30 days validity',
+    ],
+  },
+  {
+    name: 'Starter',
+    priceINR: 109,
+    duration: '/month',
+    features: [
+      '5,000 daily API requests',
+      '100 daily video requests',
+      '30 days validity',
+    ],
+  },
+  {
+    name: 'Standard',
+    priceINR: 219,
+    duration: '/month',
+    features: [
+      '10,000 daily API requests',
+      '200 daily video requests',
+      '30 days validity',
+    ],
+    recommended: true,
+  },
+  {
+    name: 'Pro',
+    priceINR: 439,
+    duration: '/month',
+    features: [
+      '25,000 daily API requests',
+      '500 daily video requests',
+      '30 days validity',
+    ],
+  },
+  {
+    name: 'Business',
+    priceINR: 889,
+    duration: '/month',
+    features: [
+      '50,000 daily API requests',
+      '1,000 daily video requests',
+      '30 days validity',
+    ],
+  },
+  {
+    name: 'Enterprise',
     priceINR: 1489,
-    duration: "/month",
-    features: ["100,000 daily API requests", "2,000 daily video requests", "30 days validity"],
+    duration: '/month',
+    features: [
+      '100,000 daily API requests',
+      '2,000 daily video requests',
+      '30 days validity',
+    ],
   },
   {
-    name: "Ultra",
+    name: 'Ultra',
     priceINR: 1889,
-    duration: "/month",
-    features: ["150,000 daily API requests", "3,000 daily video requests", "30 days validity"],
-  }
-]
+    duration: '/month',
+    features: [
+      '150,000 daily API requests',
+      '3,000 daily video requests',
+      '30 days validity',
+    ],
+  },
+];
+
 
 interface Feature {
   icon: LucideIcon
