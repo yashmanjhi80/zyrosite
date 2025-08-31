@@ -3,6 +3,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import ChatAssistant from '@/components/chat-assistant';
+import { AuthProvider } from '@/components/auth-provider';
 
 export const metadata: Metadata = {
   title: 'Zyro API - Simple & Reliable Song API',
@@ -22,9 +23,11 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('font-body antialiased bg-background min-h-screen')}>
-        {children}
-        <ChatAssistant />
-        <Toaster />
+        <AuthProvider>
+          {children}
+          <ChatAssistant />
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
