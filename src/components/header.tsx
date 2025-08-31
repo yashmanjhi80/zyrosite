@@ -16,14 +16,17 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Skeleton } from './ui/skeleton';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const { user, loading } = useAuth();
+  const router = useRouter();
 
   const handleSignOut = async () => {
     await signOut(auth);
+    router.push('/');
   };
 
   const scrollTo = (id: string) => {
@@ -51,6 +54,10 @@ export default function Header() {
       ]
     },
   ];
+  
+  if (pathname.startsWith('/dashboard')) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -79,10 +86,14 @@ export default function Header() {
             )
           ))}
         </nav>
-        <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-4">
           {loading ? (
             <Skeleton className="h-10 w-24" />
           ) : user ? (
+            <>
+            <Button asChild variant="secondary">
+                <Link href="/dashboard">Dashboard</Link>
+            </Button>
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -100,12 +111,16 @@ export default function Header() {
                     </div>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => router.push('/dashboard')}>
+                    <span>Dashboard</span>
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={handleSignOut}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+            </>
           ) : (
             <Button asChild>
               <Link href="/login">Login</Link>
@@ -151,7 +166,12 @@ export default function Header() {
                  {loading ? (
                     <Skeleton className="h-10 w-full" />
                  ) : user ? (
-                   <Button className="w-full" onClick={handleSignOut}>Log Out</Button>
+                  <div className='text-center'>
+                    <Button className="w-full mb-2" asChild>
+                      <Link href="/dashboard">Go to Dashboard</Link>
+                    </Button>
+                    <Button className="w-full" variant="outline" onClick={handleSignOut}>Log Out</Button>
+                  </div>
                  ) : (
                    <Button className="w-full" asChild>
                       <Link href="/login">Login</Link>

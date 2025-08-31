@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { auth, googleProvider } from '@/lib/firebase';
@@ -15,7 +15,7 @@ export default function LoginPage() {
   const handleSignIn = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      router.push('/');
+      router.push('/dashboard');
     } catch (error: any) {
       if (error.code !== 'auth/cancelled-popup-request') {
         console.error("Error signing in with Google: ", error);
@@ -25,7 +25,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (user) {
-      router.push('/');
+      router.push('/dashboard');
     }
   }, [user, router]);
 
@@ -34,7 +34,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Welcome Back</CardTitle>
-          <CardDescription>Sign in to continue to Zyro API</CardDescription>
+          <CardDescription>Sign in to continue to your Dashboard</CardDescription>
         </CardHeader>
         <CardContent>
           <Button className="w-full" onClick={handleSignIn}>
