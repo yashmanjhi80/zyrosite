@@ -30,6 +30,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 import { Bar, BarChart as RechartsBarChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { Badge } from "@/components/ui/badge"
 
 const chartConfig = {
   requests: {
@@ -68,7 +69,7 @@ export default function UsagePage() {
             Most frequently accessed endpoints in the last 7 days.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pl-0 sm:pl-2">
           <ChartContainer config={chartConfig} className="h-[300px] w-full">
             <RechartsBarChart data={chartData} layout="vertical" margin={{ left: 20, right: 20 }}>
               <CartesianGrid horizontal={false} />
@@ -79,6 +80,7 @@ export default function UsagePage() {
                 axisLine={false}
                 tickMargin={10}
                 width={120}
+                className="text-xs sm:text-sm"
               />
               <XAxis dataKey="requests" type="number" hide />
               <ChartTooltip
@@ -99,31 +101,33 @@ export default function UsagePage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex flex-col md:flex-row gap-4">
-            <Input type="date" className="max-w-sm"/>
-            <Select>
-              <SelectTrigger className="md:w-[180px]">
-                <SelectValue placeholder="Filter by endpoint" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Endpoints</SelectItem>
-                <SelectItem value="audio">/audio/get</SelectItem>
-                <SelectItem value="video">/video/get</SelectItem>
-                <SelectItem value="search">/search</SelectItem>
-              </SelectContent>
-            </Select>
-             <Select>
-              <SelectTrigger className="md:w-[180px]">
-                <SelectValue placeholder="Filter by status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Statuses</SelectItem>
-                <SelectItem value="200">200 OK</SelectItem>
-                <SelectItem value="404">404 Not Found</SelectItem>
-                <SelectItem value="500">500 Error</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button>Filter</Button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Input type="date" className="max-w-full sm:max-w-sm"/>
+            <div className="grid grid-cols-2 sm:flex sm:flex-row gap-4">
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Filter by endpoint" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Endpoints</SelectItem>
+                    <SelectItem value="audio">/audio/get</SelectItem>
+                    <SelectItem value="video">/video/get</SelectItem>
+                    <SelectItem value="search">/search</SelectItem>
+                  </SelectContent>
+                </Select>
+                 <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Filter by status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Statuses</SelectItem>
+                    <SelectItem value="200">200 OK</SelectItem>
+                    <SelectItem value="404">404 Not Found</SelectItem>
+                    <SelectItem value="500">500 Error</SelectItem>
+                  </SelectContent>
+                </Select>
+            </div>
+            <Button className="w-full sm:w-auto">Filter</Button>
           </div>
           <div className="overflow-x-auto">
             <Table>
@@ -138,18 +142,22 @@ export default function UsagePage() {
               <TableBody>
                 {usageLogs.map((log, index) => (
                   <TableRow key={index}>
-                    <TableCell className="font-mono">{log.timestamp}</TableCell>
-                    <TableCell className="font-mono">{log.endpoint}</TableCell>
+                    <TableCell className="font-mono text-xs sm:text-sm">{log.timestamp}</TableCell>
+                    <TableCell className="font-mono text-xs sm:text-sm">{log.endpoint}</TableCell>
                     <TableCell>
-                       <span className={`px-2 py-1 text-xs rounded-full ${
-                          log.status === 200 ? 'bg-green-500/20 text-green-400' : 
-                          log.status === 404 ? 'bg-yellow-500/20 text-yellow-400' :
-                          'bg-red-500/20 text-red-400'
+                       <Badge variant={
+                          log.status === 200 ? 'default' : 
+                          log.status === 404 ? 'secondary' :
+                          'destructive'
+                        } className={`${
+                          log.status === 200 ? 'bg-green-500/20 text-green-400 border-none' : 
+                          log.status === 404 ? 'bg-yellow-500/20 text-yellow-400 border-none' :
+                          ''
                         }`}>
                         {log.status}
-                       </span>
+                       </Badge>
                     </TableCell>
-                    <TableCell className="font-mono">{log.ip}</TableCell>
+                    <TableCell className="font-mono text-xs sm:text-sm">{log.ip}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

@@ -54,7 +54,7 @@ export default function SupportPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Submit Ticket</Button>
+              <Button className="w-full sm:w-auto">Submit Ticket</Button>
             </CardFooter>
           </Card>
         </div>

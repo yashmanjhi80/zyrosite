@@ -41,16 +41,16 @@ export default function BillingPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                 <div>
-                    <div className="flex justify-between mb-1">
+                    <div className="flex flex-col sm:flex-row justify-between mb-1">
                     <span className="text-sm font-medium">Monthly Usage</span>
                     <span className="text-sm text-muted-foreground">34,567 / 300,000 requests (11.5%)</span>
                     </div>
                     <Progress value={11.5} />
                 </div>
                 </CardContent>
-                <CardFooter className="flex justify-between items-center">
-                    <p className="text-sm text-muted-foreground">Next payment of ₹499 on July 1, 2023</p>
-                    <Button variant="outline">Cancel Subscription</Button>
+                <CardFooter className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p className="text-sm text-muted-foreground text-center sm:text-left">Next payment of ₹499 on July 1, 2023</p>
+                    <Button variant="outline" className="w-full sm:w-auto">Cancel Subscription</Button>
                 </CardFooter>
             </Card>
 
@@ -75,8 +75,8 @@ export default function BillingPage() {
                     <TableBody>
                         {paymentHistory.map((payment) => (
                         <TableRow key={payment.invoiceId}>
-                            <TableCell>{payment.date}</TableCell>
-                            <TableCell>{payment.amount}</TableCell>
+                            <TableCell className="text-xs sm:text-sm">{payment.date}</TableCell>
+                            <TableCell className="text-xs sm:text-sm">{payment.amount}</TableCell>
                             <TableCell>
                             <Badge variant={payment.status === 'Paid' ? 'default' : 'destructive'} className={`${payment.status === 'Paid' ? 'bg-green-500/20 text-green-400 border-none' : ''}`}>{payment.status}</Badge>
                             </TableCell>

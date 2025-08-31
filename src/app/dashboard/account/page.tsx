@@ -31,7 +31,7 @@ export default function AccountPage() {
                 <CardTitle className="text-2xl">{user?.displayName}</CardTitle>
                 <CardDescription>Manage your profile and account settings.</CardDescription>
             </div>
-            <Button variant="outline">Change Avatar</Button>
+            <Button variant="outline" className="w-full sm:w-auto">Change Avatar</Button>
         </CardHeader>
         <CardContent className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
@@ -54,7 +54,7 @@ export default function AccountPage() {
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Button>Save Changes</Button>
+                        <Button className="w-full sm:w-auto">Save Changes</Button>
                     </CardFooter>
                 </Card>
                 <Card>
@@ -76,7 +76,7 @@ export default function AccountPage() {
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Button>Update Password</Button>
+                        <Button className="w-full sm:w-auto">Update Password</Button>
                     </CardFooter>
                 </Card>
             </div>
@@ -88,9 +88,9 @@ export default function AccountPage() {
               <CardTitle className="text-destructive">Danger Zone</CardTitle>
               <CardDescription>These actions are irreversible. Please be certain.</CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-between items-center">
-              <p className="text-sm">Delete your account and all associated data.</p>
-              <Button variant="destructive">Delete Account</Button>
+          <CardContent className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-center sm:text-left">Delete your account and all associated data.</p>
+              <Button variant="destructive" className="w-full sm:w-auto">Delete Account</Button>
           </CardContent>
       </Card>
     </div>

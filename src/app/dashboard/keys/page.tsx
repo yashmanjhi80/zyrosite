@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Copy, Trash2, PlusCircle, Gauge } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { Badge } from "@/components/ui/badge"
 
 const apiKeys = [
   {
@@ -53,7 +54,7 @@ export default function ApiKeysPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">API Keys</h1>
           <p className="text-muted-foreground">
@@ -115,9 +116,7 @@ export default function ApiKeysPage() {
                     <TableCell>{apiKey.created}</TableCell>
                     <TableCell>{apiKey.lastUsed}</TableCell>
                     <TableCell>
-                      <span className={`px-2 py-1 text-xs rounded-full ${apiKey.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                        {apiKey.status}
-                      </span>
+                      <Badge variant={apiKey.status === 'Active' ? 'default' : 'destructive'} className={`${apiKey.status === 'Active' ? 'bg-green-500/20 text-green-400 border-none' : 'bg-red-500/20 text-red-400 border-none'}`}>{apiKey.status}</Badge>
                     </TableCell>
                     <TableCell className="text-right">
                       <Button variant="ghost" size="icon" onClick={() => copyToClipboard(apiKey.key)}>
