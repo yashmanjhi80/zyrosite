@@ -21,7 +21,6 @@ import {
   SidebarHeader,
   SidebarContent,
   SidebarFooter,
-  SidebarTrigger,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
@@ -127,10 +126,10 @@ export default function DashboardLayout({
                 <nav className="grid gap-6 text-lg font-medium">
                   <Link
                     href="#"
-                    className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+                    className="group flex h-10 shrink-0 items-center gap-2 text-lg font-semibold text-primary-foreground md:text-base"
                   >
-                    <Rocket className="h-5 w-5 transition-all group-hover:scale-110" />
-                    <span className="sr-only">Zyro API</span>
+                    <Rocket className="h-6 w-6 text-primary" />
+                    <span className="text-lg font-bold text-foreground font-headline">Zyro API</span>
                   </Link>
                   {navItems.map((item) => (
                     <Link

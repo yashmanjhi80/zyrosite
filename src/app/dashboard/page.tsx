@@ -38,7 +38,7 @@ const chartConfig = {
 export default function DashboardOverview() {
   return (
     <>
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -97,8 +97,8 @@ export default function DashboardOverview() {
           </CardContent>
         </Card>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        <Card className="col-span-4">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-7">
+        <Card className="lg:col-span-4">
           <CardHeader>
             <CardTitle>API Requests Over Time</CardTitle>
           </CardHeader>
@@ -125,7 +125,7 @@ export default function DashboardOverview() {
               </ChartContainer>
           </CardContent>
         </Card>
-        <Card className="col-span-4 md:col-span-3">
+        <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle>Top Endpoints</CardTitle>
             <CardDescription>
