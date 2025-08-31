@@ -10,7 +10,8 @@ import {
   MessageSquare,
   User as UserIcon,
   Search,
-  Rocket
+  Rocket,
+  PanelLeft
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -118,7 +119,7 @@ export default function DashboardLayout({
             <Sheet>
               <SheetTrigger asChild>
                 <Button size="icon" variant="outline" className="sm:hidden">
-                  <SidebarTrigger />
+                  <PanelLeft className="h-5 w-5" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
