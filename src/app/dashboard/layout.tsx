@@ -38,7 +38,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 import { useAuth } from "@/components/auth-provider"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
@@ -123,6 +123,9 @@ export default function DashboardLayout({
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="sm:max-w-xs">
+                <SheetHeader className="sr-only">
+                    <SheetTitle>Menu</SheetTitle>
+                </SheetHeader>
                 <nav className="grid gap-6 text-lg font-medium">
                   <Link
                     href="#"
