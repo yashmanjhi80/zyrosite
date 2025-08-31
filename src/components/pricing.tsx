@@ -19,7 +19,7 @@ export default function Pricing() {
             Simple, transparent pricing for projects of all sizes. Start for free and upgrade as you grow.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan) => (
             <Card 
               key={plan.name} 
@@ -32,7 +32,7 @@ export default function Pricing() {
                 <CardTitle className="text-2xl font-bold font-headline">{plan.name}</CardTitle>
                 <CardDescription>
                     <span className="text-4xl font-bold text-foreground font-code">
-                        {`₹${plan.priceINR}`}
+                        {typeof plan.priceINR === 'number' ? `₹${plan.priceINR}` : plan.priceINR}
                     </span>
                     <span className="text-muted-foreground">{plan.duration}</span>
                 </CardDescription>
@@ -53,7 +53,7 @@ export default function Pricing() {
                   variant={plan.recommended ? 'default' : 'outline'}
                   asChild
                 >
-                  <Link href="https://t.me/mrzyro" target="_blank">Get API Key</Link>
+                  <Link href="https://t.me/mrzyro" target="_blank">Subscribe</Link>
                 </Button>
               </CardFooter>
             </Card>
