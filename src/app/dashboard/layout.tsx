@@ -186,7 +186,7 @@ export default function DashboardLayout({
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
-          <main className="flex-1 p-4 sm:px-6 sm:py-6">
+          <main className="flex-1 p-4 sm:px-6 sm:py-6 overflow-x-hidden">
             {children}
           </main>
         </SidebarInset>

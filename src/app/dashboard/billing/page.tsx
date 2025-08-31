@@ -80,8 +80,8 @@ export default function BillingPage() {
                     <TableBody>
                         {paymentHistory.map((payment) => (
                         <TableRow key={payment.invoiceId}>
-                            <TableCell className="text-xs sm:text-sm">{payment.date}</TableCell>
-                            <TableCell className="text-xs sm:text-sm">{payment.amount}</TableCell>
+                            <TableCell className="text-xs sm:text-sm whitespace-nowrap">{payment.date}</TableCell>
+                            <TableCell className="text-xs sm:text-sm whitespace-nowrap">{payment.amount}</TableCell>
                             <TableCell>
                             <Badge variant={payment.status === 'Paid' ? 'default' : 'destructive'} className={`${payment.status === 'Paid' ? 'bg-green-500/20 text-green-400 border-none' : ''}`}>{payment.status}</Badge>
                             </TableCell>

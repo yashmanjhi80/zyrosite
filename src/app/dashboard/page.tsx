@@ -15,12 +15,12 @@ import {
 import { Bar, BarChart as RechartsBarChart, CartesianGrid, Line, LineChart as RechartsLineChart, XAxis, YAxis } from "recharts"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
+  { month: "Jan", desktop: 186, mobile: 80 },
+  { month: "Feb", desktop: 305, mobile: 200 },
+  { month: "Mar", desktop: 237, mobile: 120 },
+  { month: "Apr", desktop: 73, mobile: 190 },
   { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { month: "Jun", desktop: 214, mobile: 140 },
 ]
 
 const chartConfig = {
@@ -44,7 +44,7 @@ export default function DashboardOverview() {
             <p className="text-muted-foreground">A quick look at your API usage and status.</p>
         </div>
       </div>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -110,13 +110,14 @@ export default function DashboardOverview() {
           </CardHeader>
           <CardContent className="pl-2">
              <ChartContainer config={chartConfig} className="h-[350px] w-full">
-                <RechartsLineChart data={chartData}>
+                <RechartsLineChart data={chartData} margin={{ left: -20, right: 20 }}>
                   <CartesianGrid vertical={false} />
                   <XAxis
                     dataKey="month"
                     tickLine={false}
                     axisLine={false}
                     tickMargin={8}
+                    tickFormatter={(value) => value.slice(0, 3)}
                   />
                   <YAxis
                     tickLine={false}

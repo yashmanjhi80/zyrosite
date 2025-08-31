@@ -72,7 +72,7 @@ export default function ApiKeysPage() {
           <CardTitle>Usage Limits</CardTitle>
           <CardDescription>You are on the Pro plan.</CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-6 md:grid-cols-2">
+        <CardContent className="grid gap-6 sm:grid-cols-2">
             <div className="flex items-center space-x-4">
                 <Gauge className="h-10 w-10 text-primary"/>
                 <div>

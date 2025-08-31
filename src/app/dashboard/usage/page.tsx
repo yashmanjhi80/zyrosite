@@ -107,8 +107,8 @@ export default function UsagePage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-col sm:flex-row gap-4">
-            <Input type="date" className="max-w-full sm:max-w-sm"/>
-            <div className="grid grid-cols-2 sm:flex sm:flex-row gap-4">
+            <Input type="date" className="w-full sm:max-w-xs"/>
+            <div className="grid grid-cols-1 sm:flex sm:flex-row gap-4 w-full sm:w-auto">
                 <Select>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Filter by endpoint" />
