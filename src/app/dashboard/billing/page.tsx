@@ -30,7 +30,12 @@ const paymentHistory = [
 export default function BillingPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Billing</h1>
+       <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+        <div>
+            <h1 className="text-3xl font-bold tracking-tight">Billing</h1>
+            <p className="text-muted-foreground">Manage your subscription and view payment history.</p>
+        </div>
+      </div>
 
       <div className="grid gap-6 lg:grid-cols-5">
         <div className="lg:col-span-3 space-y-6">
@@ -97,7 +102,7 @@ export default function BillingPage() {
                     <CardTitle className="text-2xl">Upgrade Your Plan</CardTitle>
                     <CardDescription>Get more features and higher limits by upgrading.</CardDescription>
                 </CardHeader>
-                <CardContent className="text-center space-y-4">
+                <CardContent className="text-center space-y-4 pt-6">
                     <p>Unlock 4K video downloads, priority support, and up to 1,000,000 requests per month.</p>
                 </CardContent>
                 <CardFooter>

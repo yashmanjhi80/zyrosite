@@ -19,7 +19,12 @@ export default function AccountPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Account</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+        <div>
+            <h1 className="text-3xl font-bold tracking-tight">Account</h1>
+            <p className="text-muted-foreground">Manage your profile and account settings.</p>
+        </div>
+      </div>
       
       <Card>
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -29,7 +34,7 @@ export default function AccountPage() {
             </Avatar>
             <div className="flex-1">
                 <CardTitle className="text-2xl">{user?.displayName}</CardTitle>
-                <CardDescription>Manage your profile and account settings.</CardDescription>
+                <CardDescription>View and edit your profile details below.</CardDescription>
             </div>
             <Button variant="outline" className="w-full sm:w-auto">Change Avatar</Button>
         </CardHeader>
@@ -88,7 +93,7 @@ export default function AccountPage() {
               <CardTitle className="text-destructive">Danger Zone</CardTitle>
               <CardDescription>These actions are irreversible. Please be certain.</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <CardContent className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6">
               <p className="text-sm text-center sm:text-left">Delete your account and all associated data.</p>
               <Button variant="destructive" className="w-full sm:w-auto">Delete Account</Button>
           </CardContent>

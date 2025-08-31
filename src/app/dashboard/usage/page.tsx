@@ -60,7 +60,12 @@ const usageLogs = [
 export default function UsagePage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Usage</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+        <div>
+            <h1 className="text-3xl font-bold tracking-tight">Usage</h1>
+            <p className="text-muted-foreground">Track your API usage and view logs.</p>
+        </div>
+      </div>
 
        <Card>
         <CardHeader>

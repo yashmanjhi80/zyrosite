@@ -23,7 +23,12 @@ import { faqs } from "@/lib/data"
 export default function SupportPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">Support</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+        <div>
+            <h1 className="text-3xl font-bold tracking-tight">Support</h1>
+            <p className="text-muted-foreground">Get help or find answers to common questions.</p>
+        </div>
+      </div>
       <div className="grid gap-6 lg:grid-cols-5">
         <div className="lg:col-span-3 space-y-6">
           <Card>

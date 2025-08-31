@@ -37,7 +37,13 @@ const chartConfig = {
 
 export default function DashboardOverview() {
   return (
-    <>
+    <div className="space-y-6">
+       <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+        <div>
+            <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
+            <p className="text-muted-foreground">A quick look at your API usage and status.</p>
+        </div>
+      </div>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -154,6 +160,6 @@ export default function DashboardOverview() {
           </CardContent>
         </Card>
       </div>
-    </>
+    </div>
   )
 }

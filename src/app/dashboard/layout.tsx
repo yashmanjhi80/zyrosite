@@ -123,17 +123,18 @@ export default function DashboardLayout({
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="sm:max-w-xs">
-                <SheetHeader className="sr-only">
-                    <SheetTitle>Menu</SheetTitle>
+                <SheetHeader>
+                    <SheetTitle>
+                      <Link
+                        href="#"
+                        className="group flex h-10 shrink-0 items-center gap-2 text-lg font-semibold text-primary-foreground md:text-base"
+                      >
+                        <Rocket className="h-6 w-6 text-primary" />
+                        <span className="text-lg font-bold text-foreground font-headline">Zyro API</span>
+                      </Link>
+                    </SheetTitle>
                 </SheetHeader>
-                <nav className="grid gap-6 text-lg font-medium">
-                  <Link
-                    href="#"
-                    className="group flex h-10 shrink-0 items-center gap-2 text-lg font-semibold text-primary-foreground md:text-base"
-                  >
-                    <Rocket className="h-6 w-6 text-primary" />
-                    <span className="text-lg font-bold text-foreground font-headline">Zyro API</span>
-                  </Link>
+                <nav className="grid gap-6 text-lg font-medium mt-6">
                   {navItems.map((item) => (
                     <Link
                       key={item.href}
@@ -185,7 +186,7 @@ export default function DashboardLayout({
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
-          <main className="flex flex-1 flex-col gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
+          <main className="flex-1 p-4 sm:px-6 sm:py-6">
             {children}
           </main>
         </SidebarInset>
